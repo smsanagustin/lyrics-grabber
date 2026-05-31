@@ -61,7 +61,12 @@ class LyricsIndicator extends PanelMenu.Button {
         const scroll = new St.ScrollView({
             style_class: 'lyrics-grabber-scroll',
             overlay_scrollbars: true,
+
+            // allow pop up scrolling
+            x_expand: true,
+            y_expand: true,
         });
+        scroll.set_policy(St.PolicyType.NEVER, St.PolicyType.AUTOMATIC);
         scroll.add_child(box);
 
         const scrollItem = new PopupMenu.PopupBaseMenuItem({
