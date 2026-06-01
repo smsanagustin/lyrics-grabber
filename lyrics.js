@@ -12,9 +12,7 @@ const REQUEST_TIMEOUT_SECONDS = 15;
 
 // --- Title/artist cleanup ---------------------------------------------------
 
-// Player titles often carry suffixes that hurt matching, e.g.
-// "Take My Hand - Joshua Tree Version" or "Song (Remastered 2011)". We strip
-// those for a secondary lookup if the verbatim one misses.
+// Strip player titles with unnecessary suffixes
 function simplifyTitle(title) {
   return title
     .replace(
@@ -38,8 +36,6 @@ export function createSession() {
   return session;
 }
 
-// Fetches a URL and returns {status, text}. Resolves for any HTTP status so
-// callers can treat e.g. 404 (no lyrics) as "not found" rather than an error.
 function fetchUrl(session, url) {
   return new Promise((resolve, reject) => {
     const message = Soup.Message.new("GET", url);
@@ -73,13 +69,11 @@ async function fetchJson(session, url) {
   }
 }
 
-// --- Lookups ----------------------------------------------------------------
-
 function q(value) {
   return encodeURIComponent(value);
 }
 
-// Exact lookup by track + artist name.
+// Lyrics lookup by track + artist name.
 async function lookupExact(session, title, artist) {
   const url = `${API_BASE}/get?track_name=${q(title)}&artist_name=${q(artist)}`;
   const record = await fetchJson(session, url);

@@ -66,7 +66,7 @@ const LyricsIndicator = GObject.registerClass(
       this.menu.addMenuItem(this._headerItem);
       this.menu.addMenuItem(new PopupMenu.PopupSeparatorMenuItem());
 
-      // Body: scrollable, word-wrapped lyrics.
+      // Body: popup menu's height expands to fit entire lyrics
       this._lyricsLabel = new St.Label({
         style_class: "lyrics-grabber-body",
         text: "Click to load lyrics for the current song.",

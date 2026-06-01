@@ -35,7 +35,7 @@ function dbusCall(busName, objectPath, iface, method, params) {
   });
 }
 
-/** Returns the list of bus names that expose an MPRIS player. */
+// list currently active players
 async function listPlayers() {
   const reply = await dbusCall(
     "org.freedesktop.DBus",
@@ -48,13 +48,7 @@ async function listPlayers() {
   return names.filter((n) => n.startsWith(MPRIS_BUS_PREFIX));
 }
 
-/**
- * Reads a single org.mpris.MediaPlayer2.Player property from a player.
- *
- * Properties.Get returns type "(v)" — a tuple wrapping a boxed variant. We use
- * recursiveUnpack() (not deepUnpack()) so the inner variant is fully unwrapped
- * into native JS values; deepUnpack() would leave it as a GVariant.
- */
+// Reads a single org.mpris.MediaPlayer2.Player property from a player
 async function getProperty(busName, prop) {
   const reply = await dbusCall(
     busName,
@@ -67,7 +61,7 @@ async function getProperty(busName, prop) {
   return value;
 }
 
-/** Converts a raw MPRIS Metadata dict into {title, artist} (or null). */
+// Converts a raw MPRIS Metadata dict into {title, artist} (or null).
 function metadataToSong(metadata) {
   if (!metadata) return null;
 
@@ -82,14 +76,7 @@ function metadataToSong(metadata) {
   return { title: title.toString(), artist: artist.toString() };
 }
 
-/**
- * Calls `onChange` whenever a player's track metadata / playback status
- * changes, or when a new MPRIS player appears on the bus. The callback fires on
- * a "something changed, re-check" basis — it doesn't carry the new song, so the
- * caller should re-read state with getCurrentSong().
- *
- * Returns a function that tears down both subscriptions.
- */
+// Returns a function that tears down both subscriptions.
 export function watchPlayers(onChange) {
   const bus = Gio.DBus.session;
 
@@ -124,11 +111,7 @@ export function watchPlayers(onChange) {
   };
 }
 
-/**
- * Returns {title, artist} for the active player. Prefers a player whose
- * PlaybackStatus is "Playing"; otherwise falls back to the first player that
- * exposes usable metadata. Returns null when nothing is available.
- */
+// returns {title, artist} for the active player with "playing" status (fallback to first player)
 export async function getCurrentSong() {
   const players = await listPlayers();
   if (players.length === 0) return null;
