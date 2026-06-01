@@ -1,5 +1,5 @@
 // Entry point: a panel button whose popup shows the lyrics for the song that
-// is currently playing (detected via MPRIS, fetched from Google).
+// is currently playing (detected via MPRIS, lyrics fetched from lrclib).
 
 import GObject from "gi://GObject";
 import GLib from "gi://GLib";
@@ -35,9 +35,10 @@ const LyricsIndicator = GObject.registerClass(
 
       this._buildMenu();
 
-      // Reload the lyrics each time the popup is opened.
+      // load the lyrics if cached lyrics does not exist
       this.menu.connect("open-state-changed", (_menu, isOpen) => {
-        if (isOpen) this._refresh().catch((e) => logError(e, "Lyrics Grabber"));
+        if (isOpen && this._cacheText === null)
+          this._refresh().catch((e) => logError(e, "Lyrics Grabber"));
       });
 
       // Fetch lyrics in the background whenever the playing song changes
