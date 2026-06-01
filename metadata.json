@@ -1,5 +1,5 @@
 {
-  "uuid": "lyrics-grabber@sophiathesenpai.gmail.com",
+  "uuid": "lyrics-grabber@sophiescodes.github.io",
   "name": "Lyrics Grabber",
   "description": "Detects the currently playing song via MPRIS and shows its lyrics (fetched from lrclib) in a panel popup.",
   "shell-version": ["50"],
