@@ -20,6 +20,7 @@ const LyricsIndicator = GObject.registerClass(
     _init(extension) {
       super._init(0.5, "Lyrics Grabber");
       this._session = createSession();
+      this._settings = extension.getSettings();
 
       // cache already searched lyrics
       this._cacheKey = null;
@@ -35,6 +36,13 @@ const LyricsIndicator = GObject.registerClass(
       );
 
       this._buildMenu();
+
+      // apply the configured font size in the settings
+      this._applyFontSize();
+      this._settingsChangedId = this._settings.connect(
+        "changed::font-size",
+        () => this._applyFontSize(),
+      );
 
       // load the lyrics if cached lyrics does not exist
       this.menu.connectObject(
@@ -106,6 +114,12 @@ const LyricsIndicator = GObject.registerClass(
       this._lyricsLabel.text = body;
     }
 
+    // font size value is the percentage of the default size [100 = 1em (default)]
+    _applyFontSize() {
+      const percent = this._settings.get_int("font-size");
+      this._lyricsLabel.set_style(`font-size: ${percent / 100}em;`);
+    }
+
     async _refresh() {
       let song;
       try {
@@ -150,6 +164,11 @@ const LyricsIndicator = GObject.registerClass(
       this.menu.disconnectObject(this);
       this._unwatch?.();
       this._unwatch = null;
+      if (this._settingsChangedId) {
+        this._settings.disconnect(this._settingsChangedId);
+        this._settingsChangedId = 0;
+      }
+      this._settings = null;
       if (this._refreshId) {
         GLib.source_remove(this._refreshId);
         this._refreshId = 0;

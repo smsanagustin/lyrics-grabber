@@ -3,6 +3,7 @@
   "name": "Lyrics Grabber",
   "description": "Detects the currently playing song via MPRIS and shows its lyrics (fetched from lrclib) in a panel popup.",
   "shell-version": ["50"],
-  "version": 1,
+  "version": 2,
+  "settings-schema": "org.gnome.shell.extensions.lyrics-grabber",
   "url": "https://github.com/sophiescodes/lyrics-grabber"
 }

@@ -15,11 +15,24 @@ It works in three steps:
 | File                            | Responsibility                                            |
 | ------------------------------- | --------------------------------------------------------- |
 | `extension.js`                  | Entry point: the panel button, popup UI, and refresh flow |
+| `prefs.js`                      | Preferences window (font-size setting)                    |
 | `mpris.js`                      | MPRIS / D-Bus: find the active player and read its track  |
 | `lyrics.js`                     | Lyrics request/extraction                                 |
 | `stylesheet.css`                | Popup styling                                             |
+| `schemas/`                      | GSettings schema for the extension's settings             |
 | `icons/music-note-symbolic.svg` | Panel icon                                                |
 | `metadata.json`                 | Extension manifest                                        |
 
+## Settings
+
+Open the extension's settings to adjust the **panel's font size**.
+
 ## Screenshot
-<img width="489" height="812" alt="image" src="https://github.com/user-attachments/assets/dad72b8f-e5c1-476d-b77a-a16efaad1188" />
+
+<img width="558" height="602" alt="image" src="https://github.com/user-attachments/assets/646bed8c-f9ca-40ca-b8d8-fe6648fec7d2" />
+
+
+
+## Todo
+
+-   [x] Add font size adjustment option

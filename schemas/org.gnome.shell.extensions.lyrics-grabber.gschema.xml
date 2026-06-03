@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.lyrics-grabber"
+          path="/org/gnome/shell/extensions/lyrics-grabber/">
+    <key name="font-size" type="i">
+      <default>100</default>
+      <range min="100" max="200"/>
+      <summary>Lyrics font size</summary>
+      <description>
+        Size of the lyrics text in the popup, as a percentage of the default
+        font size. 100 is the default size; larger values enlarge the text.
+      </description>
+    </key>
+  </schema>
+</schemalist>
