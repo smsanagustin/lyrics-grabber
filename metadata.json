@@ -5,5 +5,5 @@
   "shell-version": ["50"],
   "version": 2,
   "settings-schema": "org.gnome.shell.extensions.lyrics-grabber",
-  "url": "https://github.com/sophiescodes/lyrics-grabber"
+  "url": "https://github.com/smsanagustin/lyrics-grabber"
 }

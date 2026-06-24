@@ -3,6 +3,10 @@
 A GNOME Shell 50 extension that detects the currently playing song and shows
 its lyrics in a panel popup.
 
+[<img height="200" alt="get_it_on_gnome" src="https://github.com/user-attachments/assets/891ac2a7-a28e-406e-a84a-cb2b1bad3ca6" />](https://extensions.gnome.org/extension/10073/lyrics-grabber/)
+
+
+
 It works in three steps:
 
 1. **Detect the song** — reads the title/artist of the active player over MPRIS.
