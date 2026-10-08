@@ -1,6 +1,7 @@
 // Entry point: a panel button whose popup shows the lyrics for the song that
 // is currently playing (detected via MPRIS, lyrics fetched from lrclib).
 
+import Clutter from "gi://Clutter";
 import GObject from "gi://GObject";
 import GLib from "gi://GLib";
 import St from "gi://St";
@@ -91,7 +92,7 @@ const LyricsIndicator = GObject.registerClass(
       this._lyricsLabel.clutter_text.ellipsize = Pango.EllipsizeMode.NONE;
 
       this._box = new St.BoxLayout({
-        vertical: true,
+        orientation: Clutter.Orientation.VERTICAL,
         x_expand: true,
         y_expand: true,
       });
