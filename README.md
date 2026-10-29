@@ -7,12 +7,10 @@ its lyrics in a panel popup.
 
 
 
-It works in three steps:
-
-1. **Detect the song** — reads the title/artist of the active player over MPRIS.
-2. **Fetch the lyrics** — searches lrclib for `"<title> <artist>"` for lyrics.
-3. **Show them** — displays the lyrics in a scrollable popup, opened from the
-   music-note icon in the top panel.
+**How it works:**
+1. Detects the song playing in the background via MPRIS
+2. Fetches the lyrics from `lrclib`
+3. Shows the fetched lyrics on the panel popup
 
 ## Project layout
 
@@ -21,15 +19,14 @@ It works in three steps:
 | `extension.js`                  | Entry point: the panel button, popup UI, and refresh flow |
 | `prefs.js`                      | Preferences window (font-size setting)                    |
 | `mpris.js`                      | MPRIS / D-Bus: find the active player and read its track  |
-| `lyrics.js`                     | Lyrics request/extraction                                 |
+| `lyrics.js`                     | Fetches lyrics                                            |
 | `stylesheet.css`                | Popup styling                                             |
 | `schemas/`                      | GSettings schema for the extension's settings             |
 | `icons/music-note-symbolic.svg` | Panel icon                                                |
 | `metadata.json`                 | Extension manifest                                        |
 
 ## Settings
-
-Open the extension's settings to adjust the **panel's font size**.
+- Change text font size
 
 ## Screenshot
 #### Default Gnome:
@@ -39,7 +36,3 @@ Open the extension's settings to adjust the **panel's font size**.
 <img width="605" height="603" alt="image" src="https://github.com/user-attachments/assets/6d0dd84a-252e-4a89-bc01-da4d76c7158b" />
 
 
-
-## Todo
-
--   [x] Add font size adjustment option
