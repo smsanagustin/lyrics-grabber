@@ -32,8 +32,11 @@ It works in three steps:
 Open the extension's settings to adjust the **panel's font size**.
 
 ## Screenshot
-
+#### Default Gnome:
 <img width="558" height="602" alt="image" src="https://github.com/user-attachments/assets/646bed8c-f9ca-40ca-b8d8-fe6648fec7d2" />
+
+#### If using [blur my shell](https://github.com/aunetx/blur-my-shell):
+<img width="605" height="603" alt="image" src="https://github.com/user-attachments/assets/6d0dd84a-252e-4a89-bc01-da4d76c7158b" />
 
 
 
